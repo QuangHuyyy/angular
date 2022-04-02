@@ -1,0 +1,13 @@
+<div class="container">
+  <header class="row">Header</header>
+  <nav class="row">
+    <nav class="nav align-items-center">
+      <a [routerLink]="['/product-list']" class="nav-link active" routerLinkActive="$router_link-active$">Product
+        list</a>
+      <a [routerLink]="['/product-detail']" class="nav-link">Product detail</a>
+    </nav>
+  </nav>
+  <section class="row">
+    <router-outlet></router-outlet>
+  </section>
+</div>

@@ -1,0 +1,190 @@
+<div class="container">
+  <h1 class="row text-center">Angular pipe</h1>
+  <table class="table table-striped table-bordered table-inverse table-responsive">
+    <thead class="thead-inverse">
+    <tr>
+      <th class="col-1">STT</th>
+      <th class="col-1">Tên Pipe</th>
+      <th class="col-1">Mô tả</th>
+      <th class="col-3">Dữ liệu đầu vào</th>
+      <th class="col-3">Kết quả</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td scope="row">1</td>
+      <td>Upper case</td>
+      <td>Viết hoa tất cả các chữ</td>
+      <td>{{ content }}</td>
+      <td>{{ content | uppercase}}</td>
+    </tr>
+    <tr>
+      <td scope="row">2</td>
+      <td>Lower case</td>
+      <td>Viết thường tất cả các chữ</td>
+      <td>{{ content }}</td>
+      <td>{{ content | lowercase}}</td>
+    </tr>
+    <tr>
+      <td scope="row">3</td>
+      <td>Title case</td>
+      <td>Viết hoa chữ cái đầu</td>
+      <td>{{ content }}</td>
+      <td>{{ content | titlecase}}</td>
+    </tr>
+    <tr>
+      <td scope="row">4</td>
+      <td>Uppercase</td>
+      <td>Viết hoa tất cả các chữ</td>
+      <td>{{ content }}</td>
+      <td>{{ content | uppercase}}</td>
+    </tr>
+    <tr>
+      <td scope="row">5</td>
+      <td>Slice</td>
+      <td>Cắt mảng hoặc chuỗi</td>
+      <td>{{ name }}</td>
+      <td>{{ name | slice:3:8}}</td>
+    </tr>
+    <tr>
+      <td scope="row">6</td>
+      <td>Number</td>
+      <td>Định dạng số thập phân</td>
+      <td>{{ amount }}</td>
+      <td>{{ amount | number:'1.0-3' }}</td>
+    </tr>
+    <tr>
+      <td scope="row">7</td>
+      <td>Percent</td>
+      <td>Phần trăm</td>
+      <td>{{ result }}</td>
+      <td>{{ result | percent : '1.0-3' }}</td>
+    </tr>
+    <tr>
+      <td scope="row">8</td>
+      <td>Currency</td>
+      <td>Định dạng tiền tệ</td>
+      <td>{{ total }}</td>
+      <td>{{ total | currency : 'USD' : true : '1.0-3' }}</td>
+    </tr>
+    <tr>
+      <td scope="row">9</td>
+      <td>Date</td>
+      <td>Định dạng ngày tháng</td>
+      <td>{{ today }}</td>
+      <td>{{ today | date : 'dd/MM/yyyy hh:mm:ss' }}</td>
+    </tr>
+    <tr>
+      <td scope="row">10</td>
+      <td>Json</td>
+      <td>Chuyển object sang string</td>
+      <td>{{ product }}</td>
+      <td>{{ product | json }}</td>
+    </tr>
+    <tr>
+      <td scope="row">11</td>
+      <td>Async</td>
+      <td>Tạm thời chưa tìm hiểu</td>
+<!--      <td>{{  }}</td>-->
+<!--      <td>{{  }}</td>-->
+    </tr>
+
+<!--    Custom pipes-->
+    <tr>
+      <td scope="row" class="text-center bg-primary text-white" colspan="5">
+        Custom pipes
+      </td>
+    </tr>
+    <tr>
+      <td scope="row">12</td>
+      <td>Truncate</td>
+      <td>Cắt chuỗi và nối thêm ... vào cuối</td>
+      <td>{{ content }}</td>
+      <td>{{ content | truncate : 50 }}</td>
+    </tr>
+    <tr>
+      <td scope="row">13</td>
+      <td>Filter</td>
+      <td>Lọc dữ liệu trong mảng</td>
+      <td colspan="2">
+        <table class="table table-bordered">
+          <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Status</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+                <input type="number" [(ngModel)]="idFilter" class="form-control">
+            </td>
+            <td>
+                <input type="text" class="form-control" [(ngModel)]="nameFilter" >
+            </td>
+            <td>
+              <input type="number" [(ngModel)]="priceFilter" class="form-control">
+            </td>
+            <td>
+                <select class="form-control" [(ngModel)]="statusFilter">
+                  <option value="">All</option>
+                  <option value="true">Active</option>
+                  <option value="false">Inactive</option>
+                </select>
+            </td>
+          </tr>
+          <tr *ngFor="let p of products | filter : idFilter : nameFilter : priceFilter : statusFilter">
+            <td scope="row">{{ p.id }}</td>
+            <td>{{ p.name }}</td>
+            <td>{{ p.price | currency : 'USD' : true : '1.0-3' }}</td>
+            <td>{{ p.status ? "Active" : "Inactive"}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td scope="row">14</td>
+      <td>Sort number</td>
+      <td>Sắp xếp mảng số</td>
+      <td class="d-flex gap-4 align-items-center">
+        {{ numbers }}
+        <button type="button" class="btn btn-primary btn-sm" (click)="handelSortNumber(1)">Tăng</button>
+        <button type="button" class="btn btn-danger btn-sm" (click)="handelSortNumber(-1)">Giảm</button>
+      </td>
+      <td>{{ numbers | sortNumber : sortValue }}</td>
+    </tr>
+
+    <tr>
+      <td scope="row">15</td>
+      <td>Sort</td>
+      <td>Sắp xếp bảng theo các trường</td>
+      <td colspan="2">
+        <table class="table table-bordered">
+          <thead>
+          <tr>
+            <th (click)="handelSort('id')">Id</th>
+            <th (click)="handelSort('name')">Name</th>
+            <th (click)="handelSort('price')">Price</th>
+            <th (click)="handelSort('status')">Status</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let p of products | sort : sortCol : sortType">
+            <td scope="row">{{ p.id }}</td>
+            <td>{{ p.name }}</td>
+            <td>{{ p.price | currency : 'USD' : true : '1.0-3' }}</td>
+            <td>{{ p.status ? "Active" : "Inactive"}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+
+
+
+    </tbody>
+  </table>
+</div>

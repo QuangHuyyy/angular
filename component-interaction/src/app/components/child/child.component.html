@@ -1,0 +1,38 @@
+<div class="card">
+  <div class="card-header bg-success">
+    <h2 class="card-title">Component child</h2>
+  </div>
+  <div class="card-body">
+    <h4 class="card-text text-center">{{ formName }}</h4>
+    <form>
+      <div class="form-floating mb-3">
+        <input [(ngModel)]="id" class="form-control" id="id" name="id" placeholder="Input id" type="text"/>
+        <label class="form-label" for="id">Id</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input [(ngModel)]="name" class="form-control" id="name" name="name" placeholder="Input name" type="text"/>
+        <label class="form-label" for="name">Name</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input [(ngModel)]="age" class="form-control" id="age" name="age" placeholder="Input age" type="number"/>
+        <label class="form-label" for="age">Age</label>
+      </div>
+<!--      <div class="mb-3">-->
+<!--        <span class="form-label" [ngStyle]="{paddingRight: '10px'}">Gender: </span>-->
+<!--        <div class="form-check form-check-inline" *ngFor="let g of genders">-->
+<!--          <input class="form-check-input" id="inlineRadio1" type="radio" [(ngModel)]="g.key" name="gender" [value]="g.value">-->
+<!--          <label class="form-check-label" for="inlineRadio1">{{g.value}}</label>-->
+<!--        </div>-->
+<!--      </div>-->
+
+      <div class="form-floating mb-3">
+        <input [(ngModel)]="address" class="form-control" id="address" name="address" placeholder="Input address"
+               type="text"/>
+        <label class="form-label" for="address">Address</label>
+      </div>
+
+      <button (click)="onSubmit()" class="btn btn-primary" type="submit">Insert</button>
+    </form>
+
+  </div>
+</div>

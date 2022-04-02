@@ -1,0 +1,15 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-full">
+      <input [(ngModel)]="name" />
+      <h1>Hello {{ name }} </h1>
+      <button [disabled]="isDisable" (click)="clearValue()">Clear value</button>
+      <ul>
+        <li *ngFor="let p of products">
+          <p>Name: {{p.name}} - quantity: {{p.quantity}} - price: {{p.price}}</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

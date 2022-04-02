@@ -1,0 +1,14 @@
+<div class="container" [ngStyle]="{marginTop: '30px'}" >
+  <p class="row">User from child component: {{userFromChild | json}}</p>
+  <div class="row">
+    <div class="col-6">
+      <app-child
+        [formName]="formName"
+        (insertUser)="handelInsert($event)"
+      ></app-child>
+    </div>
+    <div class="col-6">
+      <app-user-list [users]="users"></app-user-list>
+    </div>
+  </div>
+</div>
