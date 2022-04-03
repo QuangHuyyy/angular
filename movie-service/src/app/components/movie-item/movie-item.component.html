@@ -1,0 +1,25 @@
+<div class="card">
+  <div class="card-header bg-info">
+    <h2>Thêm phim mới</h2>
+  </div>
+  <div class="card-body">
+    <form class="row g-3">
+      <div class="col-12">
+        <label for="name" class="form-label">Tên phim</label>
+        <input type="text" class="form-control" id="name" #name>
+      </div>
+      <div class="col-12">
+        <label for="link" class="form-label">Đường dẫn</label>
+        <input type="text" class="form-control" id="link" #link>
+      </div>
+      <div class="col-12">
+        <label for="director" class="form-label">Đạo diễn</label>
+        <input type="text" class="form-control" id="director" #director>
+      </div>
+
+      <div class="col-12">
+        <button type="button" class="btn btn-primary" (click)="addMovie(name.value, link.value, director.value)">Thêm phim</button>
+      </div>
+    </form>
+  </div>
+</div>
