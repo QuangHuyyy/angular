@@ -1,0 +1,22 @@
+<app-header></app-header>
+<div class="container mt-5 mb-5">
+    <div class="card">
+      <div class="card-header bg-primary"></div>
+      <div class="card-body">
+        <router-outlet></router-outlet>
+      </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-1">
+      <button class="btn btn-primary" type="button" (click)="navigate('')">Home</button>
+    </div>
+    <div class="col-1">
+      <button class="btn btn-primary" type="button" (click)="navigate('contact')">Contact</button>
+    </div>
+    <div class="col-1">
+      <button class="btn btn-primary" type="button" (click)="navigate('about')">About</button>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

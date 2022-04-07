@@ -1,0 +1,11 @@
+<ng-container *ngIf="product else noProduct" >
+  <h3>Id: {{ product.id }}</h3>
+  <h3>Name: {{ product.name }}</h3>
+  <h4>Price: {{ product.price | currency : 'VND' : 'symbol' }}</h4>
+  <h4>Status: {{ product.status ? 'Active' : 'Inactive' }}</h4>
+
+  <a routerLink="/products/2">Product 2</a>
+</ng-container>
+<ng-template #noProduct>
+  <h2>Product doesn't exits!!!</h2>
+</ng-template>
